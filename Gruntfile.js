@@ -22,13 +22,24 @@ module.exports = function(grunt) {
         ]
       }
     },
-	clean: ['build/','dist/']
+	clean: ['build/','dist/'],
+    watch: {
+      js: {
+        files: ['src/*.js'],
+        tasks: ['browserify','uglify']
+      },
+      static: {
+        files: ['static/**'],
+        tasks: ['copy']
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['browserify','uglify','copy']);
 
