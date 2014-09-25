@@ -23,10 +23,13 @@ module.exports = function(grunt) {
       }
     },
 	clean: ['build/','dist/'],
+    jshint: {
+      all: ['src/**/*.js']
+    },
     watch: {
       js: {
         files: ['src/*.js'],
-        tasks: ['browserify','uglify']
+        tasks: ['jshint','browserify','uglify']
       },
       static: {
         files: ['static/**'],
@@ -40,6 +43,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('default', ['browserify','uglify','copy']);
 

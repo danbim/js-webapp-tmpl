@@ -33,3 +33,7 @@ with anything in the ```static``` folder.
 
 During development you can run ```grunt watch``` to have this process automated as
 soon as any files in ```static``` or ```src``` change.
+
+To run ```jshint``` for code quality inspection execute ```grunt jshint``` which
+will check all .js files in the ```src``` folder. ```jshint``` is also automatically
+run when invoking ```grunt watch```
