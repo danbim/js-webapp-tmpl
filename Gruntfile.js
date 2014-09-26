@@ -26,6 +26,18 @@ module.exports = function(grunt) {
     jshint: {
       all: ['src/**/*.js']
     },
+    yuidoc: {
+      compile: {
+        name: '<%= pkg.name %>',
+        description: '<%= pkg.description %>',
+        version: '<%= pkg.version %>',
+        url: '<%= pkg.homepage %>',
+        options: {
+          paths: 'src/',
+          outdir: 'docs/'
+        }
+      }
+    },
     watch: {
       js: {
         files: ['src/*.js'],
@@ -34,6 +46,10 @@ module.exports = function(grunt) {
       static: {
         files: ['static/**'],
         tasks: ['copy']
+      },
+      docs: {
+        files: ['src/*.js'],
+        tasks: ['yuidoc']
       }
     }
   });
@@ -44,6 +60,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
   grunt.registerTask('default', ['jshint','browserify','uglify','copy']);
 
