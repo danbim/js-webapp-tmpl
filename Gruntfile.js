@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         ]
       }
     },
-	clean: ['build/','dist/'],
+	clean: ['build/','dist/','docs/'],
     jshint: {
       all: ['src/**/*.js']
     },
@@ -62,6 +62,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
-  grunt.registerTask('default', ['jshint','browserify','uglify','copy']);
+  grunt.registerTask('doc', ['yuidoc']);
+  grunt.registerTask('default', ['jshint','browserify','uglify','copy','yuidoc']);
 
 };
